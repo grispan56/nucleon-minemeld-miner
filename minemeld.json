@@ -1,7 +1,7 @@
 {
     "version": "0.1",
     "name": "Nucleon-miner",
-    "author": "Dany Goldman",
+    "author": "Nucleon Cyber Inc.",
     "author_email": "info@nucleon.sh",
     "description": "Nucleon Cyber Intelligence Active Threats Feed ",
     "entry_points": {
