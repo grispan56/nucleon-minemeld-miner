@@ -4,21 +4,21 @@ description: >
 
 prototypes:
   miner:
-    author: IrekRomaniuk
-    class: tenablescanners.Miner
+    author: Nucleon Cyber
+    class: nucleon.Miner
     development_status: EXPERIMENTAL
     node_type: miner
     indicator_types:
       - IPv4
     tags:
       - extension
-      - nessus
+      - nucleon
     description: >
-      test prototype for tenablescanners.Miner, mines tenable.io scanners
+      test prototype for nucleon.Miner, get data from api
     config:
       interval: 3600
-      # source url to scrap indicators from (don't change)
-      url: https://docs.tenable.com/cloud/Content/Scans/Scanners.htm
+      # source url of the API
+      url: http://api.nucleoncyber.com/feed/ActiveThreats
       # age out of indicators
       # disabled, removed when they disappear from the url
       age_out:

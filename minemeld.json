@@ -3,7 +3,7 @@
     "name": "Nucleon-miner",
     "author": "Dany Goldman",
     "author_email": "info@nucleon.sh",
-    "description": "Nucleon Cyber Intelligence Active Threats Feed",
+    "description": "Nucleon Cyber Intelligence Active Threats Feed ",
     "entry_points": {
         "minemeld_nodes": {
             "tenablescanners.Miner": "nucleon.node:Miner"
