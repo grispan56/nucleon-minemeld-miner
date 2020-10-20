@@ -1,12 +1,12 @@
 {
-    "version": "0.3",
-    "name": "tenablescanners-miner",
-    "author": "Irek Romaniuk",
-    "author_email": "irek@romaniuk.us",
-    "description": "Sample MineMeld node extension for scarpping scanners addresses from docs.tenable.com/cloud/Content/Scans/Scanners.htm",
+    "version": "0.1",
+    "name": "Nucleon-miner",
+    "author": "Dany Goldman",
+    "author_email": "info@nucleon.sh",
+    "description": "Nucleon Cyber Intelligence Active Threats Feed",
     "entry_points": {
         "minemeld_nodes": {
-            "tenablescanners.Miner": "tenablescanners.node:Miner"
+            "tenablescanners.Miner": "nucleon.node:Miner"
         },
         "minemeld_prototypes": {
             "tenablescanners.prototypes": "tenablescanners:prototypes"
