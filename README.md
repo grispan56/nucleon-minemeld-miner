@@ -1,10 +1,10 @@
-# tenablescanners-miner
+# nucleon-intel-miner
 
-Scrap Nessus cloud scanner addresses from [tenable.io](https://docs.tenable.com/cloud/Content/Scans/Scanners.htm)
+Get Active Threats API data
 
 ## How it works
 
-See my post [Hacking Minemeld](https://medium.com/@irekromaniuk)
+
 
 ## Installation
 
