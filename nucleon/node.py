@@ -2,8 +2,6 @@ import logging
 import json
 
 import requests
-import pandas as pd
-from bs4 import BeautifulSoup
 
 from minemeld.ft.basepoller import BasePollerFT
 
@@ -16,20 +14,19 @@ class Miner(BasePollerFT):
 
         self.polling_timeout = self.config.get('polling_timeout', 30)
         self.verify_cert = self.config.get('verify_cert', True)
-        self.url = 'https://docs.tenable.com/cloud/Content/Scans/Scanners.htm'
+        self.url = 'http://api.nucleoncyber.com/feed/ActiveThreats'
+
+        # The basic authentication details
+        self.auth_user = self.config.get('auth_user')
+        self.auth_pass = self.config.get('auth_pass')
+        self.usrn = self.config.get('usrn')
+        self.client_id = self.config.get('client_id')
+        self.limit = 1
 
     def _build_iterator(self, item):
         # builds the request and retrieves the page
-        rkwargs = dict(
-            stream=False,
-            verify=self.verify_cert,
-            timeout=self.polling_timeout,
-        )
-
-        r = requests.get(
-            self.url,
-            **rkwargs
-        )
+        # Make the request to the API
+        r = requests.post(endpoint_url, data = {'usrn':self.usrn,'clientID':self.client_id,'limit':self.limit}, auth=(self.auth_user, self.auth_pass))
 
         try:
             r.raise_for_status()
@@ -38,17 +35,19 @@ class Miner(BasePollerFT):
                       self.name, r.status_code, r.content)
             raise
 
-        # parse the table
-        html_soup = BeautifulSoup(r.content, "lxml")
-        table = html_soup.find_all('table')[0]
-        df = pd.read_html(str(table))[0]
-        result = df[df.columns[1]].tolist()
-        result = ' '.join(result).split()
+        all_ips = list()
+        counter = 0
+
+        # build list of ip addresses
+        # for doc in data['data']:
+        #     all_ips.append(doc['ip'])
+        #     counter = counter + 1
+        result = r[data][0]['ip']
         return result
 
     def _process_item(self, item):
 
-        #indicator = item
+        #ndicator = item
         value = {
             'type': 'IPv4',
             'confidence': 100
